@@ -7,8 +7,7 @@ import { validationProductSchema } from "./product.validation";
 const createProduct = async (req: Request, res: Response) => {
   try {
     const { product } = req.body;
-    console.log(product);
-
+ 
     const validProduct = validationProductSchema.parse(product)
     const result = await productServices.createProductDB(validProduct);
 
@@ -101,9 +100,43 @@ const GetSingleProductDB = async(req:Request, res:Response) =>{
     });
   }
 }
- 
+
+//  update product 
+
+
+const UpdateProductDB = async(req:Request, res:Response) =>{
+  try {
+    const productData = req.body;
+    const { productId } = req.params;
+    const result = await productServices.updateProductDB(productId, productData);
+    
+    res.status(200).json({
+      success: true,
+      data: result,
+    });
+
+   } catch (err:unknown) {
+   
+    let errorMessage: string;
+    if (err instanceof Error) {
+        errorMessage = err.message;
+    } else {
+        errorMessage = "product created failed";
+    }
+
+    res.status(500).json({
+        success: false,
+        message: errorMessage,
+        data: "error!!!",
+    });
+  }
+}
+
+
+
 export const productControllers = {
   createProduct,
   GetAllProduct,
-  GetSingleProductDB
+  GetSingleProductDB,
+  UpdateProductDB
 };

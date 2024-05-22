@@ -36,9 +36,10 @@ const getSingleProductDB = async(productId:string) =>{
     return res;
 }
 // update product 
-const updateProductDB = async(productId:string) =>{
-  console.log(productId);
-    const res = await ProductModel.findOne({_id:productId});
+const updateProductDB = async(productId:string, productData:Product) =>{
+     const res = await ProductModel.findByIdAndUpdate(productId, productData);
+     console.log(res);
+     
     return res;
 }
 export const productServices = {
