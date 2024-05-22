@@ -1,11 +1,11 @@
-import { Schema, model, connect } from "mongoose";
-import { Orders } from "./order/product.interface";
+import mongoose, { Schema, model, connect } from "mongoose";
+import { Orders } from "./order/order.interface";
 
-const orderSchema = new Schema<Orders>({
-    email:{type: String, required:true},
-    productId:{type: String, required:true},
-    price:{type: Number, required:true},
-    quantity:{type: Number, required:true} 
-})
+const OrderSchema = new Schema<Orders>({
+  email: { type: String, required: true },
+  productId: { type: mongoose.Schema.Types.ObjectId, required: true },
+  price: { type: Number, required: true },
+  quantity: { type: Number, required: true },
+});
 
-export const OrderModel = model<Orders>('order', orderSchema);
+export const OrderModel = model<Orders>("order", OrderSchema);
