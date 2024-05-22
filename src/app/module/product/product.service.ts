@@ -37,15 +37,19 @@ const getSingleProductDB = async(productId:string) =>{
 }
 // update product 
 const updateProductDB = async(productId:string, productData:Product) =>{
-     const res = await ProductModel.findByIdAndUpdate(productId, productData);
-     console.log(res);
-     
+     const res = await ProductModel.findByIdAndUpdate(productId, productData,{ new: true });     
+    return res;
+}
+// update product 
+const deleteProductDB = async(productId:string) =>{
+     const res = await ProductModel.deleteOne({_id:productId});     
     return res;
 }
 export const productServices = {
   createProductDB,
   getAllProductDB,
   getSingleProductDB,
-  updateProductDB
+  updateProductDB,
+  deleteProductDB
  
 };
