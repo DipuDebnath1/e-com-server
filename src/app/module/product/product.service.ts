@@ -1,22 +1,17 @@
-import { productModel } from "../product.model";
-import { product } from "./product.interface";
+ import { ProductModel } from "../product.model";
+import { Product } from "./product.interface";
 
-const createproductDB = async (product: product) => {
-  const res = await productModel.create(product);
-  return res;
+const createProductDB = async (product: Product) => {
+  const res = await ProductModel.create(product);
+   return res;
 };
-const getAllproductDB = async () => {
-  const res = await productModel.find();
+ 
+const getAllStudentDB = async () => {
+  const res = await ProductModel.find();
   return res;
-};
-
-const getAproductDB = async (id: string) => {
-  const res = await productModel.findOne({ id });
-  return res;
-};
-
+}
 export const productServices = {
-  createproductDB,
-  getAllproductDB,
-  getAproductDB,
+  createProductDB,
+  getAllStudentDB
+ 
 };
