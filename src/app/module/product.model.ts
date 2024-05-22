@@ -22,9 +22,4 @@ const productSchema = new Schema<Product>({
 
 // orderSchema
 
-
-
- export const ProductModel = model<Product>('product', productSchema);
-
- 
- 
+export const ProductModel = model<Product>("product", productSchema);

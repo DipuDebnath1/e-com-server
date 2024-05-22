@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 const variantSchema = z.object({
   type: z.string(),

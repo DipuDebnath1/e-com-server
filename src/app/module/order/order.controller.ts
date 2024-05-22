@@ -1,7 +1,6 @@
-import { orderService } from "./order.service"
+import { orderService } from "./order.service";
 import { Request, Response } from "express";
-import { validationOrder } from "./order.validation";
- // post order
+// post order
 const OrderPost = async (req: Request, res: Response) => {
   try {
     const { email, productId, price, quantity } = req.body;
@@ -9,48 +8,46 @@ const OrderPost = async (req: Request, res: Response) => {
       email,
       productId,
       price,
-      quantity
+      quantity,
     );
     res.status(200).json({
       success: true,
       message: `Order created successfully!`,
       data: result,
     });
-  }catch (err:unknown) {
-   
+  } catch (err: unknown) {
     let errorMessage: string;
     if (err instanceof Error) {
-        errorMessage = err.message;
+      errorMessage = err.message;
     } else {
-        errorMessage = "order created failed";
+      errorMessage = "order created failed";
     }
 
     res.status(500).json({
-        success: false,
-        message: errorMessage,
-        data: "error!!!",
+      success: false,
+      message: errorMessage,
+      data: "error!!!",
     });
   }
 };
 
-
-// get all order 
-const GetAllOrder =async (req:Request, res:Response) =>{
-try{
-    const email = req.query.email as string
-    const result = await orderService.findAllOrder(email)
-res.status(200).json({
-    success:true,
-    data:result
-})
-}catch(err){
+// get all order
+const GetAllOrder = async (req: Request, res: Response) => {
+  try {
+    const email = req.query.email as string;
+    const result = await orderService.findAllOrder(email);
+    res.status(200).json({
+      success: true,
+      data: result,
+    });
+  } catch (err) {
     res.status(500).json({
-        success:true,
-        data:'error'
-    })
-}    
-}
+      success: true,
+      data: "error",
+    });
+  }
+};
 export const OrderController = {
-    OrderPost,
-    GetAllOrder
-}
+  OrderPost,
+  GetAllOrder,
+};
