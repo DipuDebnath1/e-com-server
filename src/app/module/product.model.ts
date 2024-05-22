@@ -1,7 +1,7 @@
 import { Schema, model, connect } from "mongoose";
 import { Product } from "./product/product.interface";
 
-
+// productSchema
 const productSchema = new Schema<Product>({
   name: { type: String, required: true },
   description: { type: String, required: true },
@@ -19,6 +19,10 @@ const productSchema = new Schema<Product>({
     inStock: { type: Boolean, required: true },
   },
 });
+
+// orderSchema
+
+
 
  export const ProductModel = model<Product>('product', productSchema);
 
