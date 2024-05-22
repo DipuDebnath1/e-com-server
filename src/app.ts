@@ -7,7 +7,6 @@ app.use(express.json());
 app.use(cors());
 
 // application route
-
 app.use("/api/v1/products", productRoutes);
 
 app.get("/", (req: Request, res: Response) => {
