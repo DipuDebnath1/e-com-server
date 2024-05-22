@@ -7,13 +7,7 @@ const createProductDB = async (product: Product) => {
 };
 //  get all product 
 const getAllProductDB = async (searchTerm?:string) => {
-  // if (searchTerm) {
-  //   const res = await ProductModel.find({ $tags: { $search: searchTerm } });
-  //   return res;
-  // } else {
-  //   const res = await ProductModel.find();
-  //   return res;
-  // }
+ 
   if (searchTerm) {
     const regex = new RegExp(searchTerm, 'i'); 
     const res = await ProductModel.find({

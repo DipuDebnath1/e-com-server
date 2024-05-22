@@ -1,7 +1,6 @@
 import express from "express"
 import { OrderController } from "./order.controller";
-import validateOrder from "./order.validation.midlewere";
-
+ 
 const router = express.Router() 
 
 router.post('/', OrderController.OrderPost);

@@ -26,7 +26,11 @@ const postOrderDB = async(  email: string, productId: string, price: number,quan
 }
 
 // get all orders 
-const findAllOrder = async() =>{
+const findAllOrder = async(email:string) =>{
+  if (email) {
+    const findOrderWithMail = await OrderModel.find({ email: email });
+    return findOrderWithMail;
+  }
     const newOrder = await OrderModel.find();
     return newOrder
 

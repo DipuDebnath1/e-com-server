@@ -1,5 +1,6 @@
 import { orderService } from "./order.service"
 import { Request, Response } from "express";
+import { validationOrder } from "./order.validation";
  // post order
 const OrderPost = async (req: Request, res: Response) => {
   try {
@@ -36,7 +37,8 @@ const OrderPost = async (req: Request, res: Response) => {
 // get all order 
 const GetAllOrder =async (req:Request, res:Response) =>{
 try{
-    const result = await orderService.findAllOrder()
+    const email = req.query.email as string
+    const result = await orderService.findAllOrder(email)
 res.status(200).json({
     success:true,
     data:result
