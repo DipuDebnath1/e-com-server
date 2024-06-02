@@ -5,7 +5,7 @@ import { validationProductSchema } from "./product.validation";
 //create product
 const createProduct = async (req: Request, res: Response) => {
   try {
-    const { product } = req.body;
+    const  product  = req.body;
 
     const validProduct = validationProductSchema.parse(product);
     const result = await productServices.createProductDB(validProduct);
